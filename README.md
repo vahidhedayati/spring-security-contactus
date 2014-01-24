@@ -60,3 +60,8 @@ Ensure you have enabled and configured all of these values in your config.groovy
 
 
 
+
+refer to :
+https://github.com/vahidhedayati/spcontacttest/ for a sample site using this plugin
+
+
