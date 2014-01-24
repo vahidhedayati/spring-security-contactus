@@ -20,7 +20,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
 	'/**/simpleCaptcha/captcha': 	  ['permitAll'],
-	'/simpleCaptcha/captcha': 	  	  ['permitAll'],
-	'/**/contactus/**': 	  		  ['permitAll'],
-	'/contactus/**': 	  		      ['permitAll']
+	'/simpleCaptcha/captcha': 	  ['permitAll'],
+	'/**/contactus/**': 	  	  ['permitAll'],
+	'/contactus/**': 	  	  ['permitAll']
 ]
