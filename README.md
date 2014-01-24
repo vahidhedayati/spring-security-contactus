@@ -1,3 +1,8 @@
+This is a rewrite of http://grails.org/plugin/contact-me  which should now work with the latest and greatest grails:
+
+
+
+
 install jquery-ui within your project 
 
 Then enable both jquery and jquery-ui in your main.gsp
@@ -65,3 +70,35 @@ refer to :
 https://github.com/vahidhedayati/spcontacttest/ for a sample site using this plugin
 
 
+
+You will need a domain class called ContactUs or whatever you wish it to be called - just ensure the config in the config.grooy table name matches this name: (this is the sample domainClass taken from within the plugin - it uses to generate the form view:) it needs to be identical so far as fields and configuration goes.
+
+
+package grails.plugins.springsecurity.contactus
+	
+	class ContactUsMaster {
+		Date dateCreated
+		String name
+		String email
+		String username
+		String subject
+		String message
+		String captcha
+		static constraints = {
+			name(blank: false)
+			email(blank: false, email: true)
+			subject(blank: false)
+			message(minSize: 10, blank: false)
+		}
+		static optionals = [ 'username'  ]
+		static mapping = {
+			message type: 'text'
+			username  defaultValue: ''
+		}
+		static transients = ['captcha']
+		static afterContactUs = { form, params ->
+			new ContactUsMaster(name:form.name, email:form.email, username:form.username, subject:form.subject, message:form.message).save()
+		}
+	}
+	
+	
