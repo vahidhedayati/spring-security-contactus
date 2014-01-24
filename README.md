@@ -8,12 +8,12 @@ Then enable both jquery and jquery-ui in your main.gsp
 
 
 Refer to your contact page via a remotefunction like below:
-
-
- <!-- added in spring-security-contactus form here as a button for test purposes -->
-                 <button id=boxbtn onclick="<g:remoteFunction controller="ContactUs" action="index" update="siteContent" />">contact</button>
-          <div id="siteContent"> </div>
-                
+		
+		
+		 <!-- added in spring-security-contactus form here as a button for test purposes -->
+		                 <button id=boxbtn onclick="<g:remoteFunction controller="ContactUs" action="index" update="siteContent" />">contact</button>
+		          <div id="siteContent"> </div>
+		                
 
 
 
