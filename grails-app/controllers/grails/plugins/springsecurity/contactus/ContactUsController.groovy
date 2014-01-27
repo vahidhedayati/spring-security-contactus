@@ -17,13 +17,12 @@ class ContactUsController {
 	def emailBody() { }
 	
 	def send = { ContactUsVerify contactUs ->
-		def isspringsecurity=grailsApplication.config.contactus.isspringsecurity
-		def userlayout=grailsApplication.config.contactus.userlayout ?: 'main'
 		def user, usersemail
 		Boolean captchaValid = 0
 		if (session.SPRING_SECURITY_CONTEXT?.authentication?.authenticated!=null) {
 			captchaValid = 1
 			user = springSecurityService.currentUser
+			usersemail=user?.email
 		}else{
 			captchaValid = simpleCaptchaService.validateCaptcha(params.captcha)
 		}	
@@ -40,9 +39,10 @@ class ContactUsController {
 						def emails=contactUsService.getAdminEmail(admingroup)					
 						if (!emails) {
 							def sendto=grailsApplication.config.contactus.to.address
-							verifySendTo(sendto)
-							to sendto
-							log.info ("contactUs Email: Individual Email being sent to: ${sendto}")
+							if (sendto) { 
+							  to sendto
+							  log.info ("contactUs Email: Individual Email being sent to: ${sendto}")
+							}  
 						}else{
 							def primary=[]
 							emails.each {
@@ -53,9 +53,10 @@ class ContactUsController {
 						}
 					}else{
 						def sendto=grailsApplication.config.contactus.to.address
-						verifySendTo(sendto)
-						to sendto
-						log.info ("contactUs Email: Individual Email being sent to: ${sendto}")
+						if (sendto) {
+						  to sendto
+						  log.info ("contactUs Email: Individual Email being sent to: ${sendto}")
+						}
 					}	
 							
 			        from contactUs.email
@@ -84,7 +85,7 @@ class ContactUsController {
 		flash.chainedParams = params
 		render( view: grailsApplication.config.contactus.form.view ?:  "/contactUs/index",
         plugin: grailsApplication.config.contactus.form.view ? null : "contact-me",
-        model: [contactUs: contactUs, user:user, userlayout:userlayout, usersemail:usersemail])
+        model: [contactUs: contactUs, user:user, usersemail:usersemail])
 		return
     }
 	
@@ -96,17 +97,6 @@ class ContactUsController {
 		int hasMx=cm.doLookup(emaildomain)
 		if (hasMx==0) {
 			return 'contactUs.email.mx'
-		}
-	}
-	
-	private void verifySendTo(def sendTo) {
-		if (!sendTo) {
-			flash.error = message(code:'contactUs.email.sendto.invalid', args:'')
-			flash.chainedParams = params
-			render( view: grailsApplication.config.contactus.form.view ?:  "/contactUs/index",
-			plugin: grailsApplication.config.contactus.form.view ? null : "contact-me",
-			model: [contactUs: contactUs, user:user, userlayout:userlayout, usersemail:usersemail])
-			return
 		}
 	}
 }
