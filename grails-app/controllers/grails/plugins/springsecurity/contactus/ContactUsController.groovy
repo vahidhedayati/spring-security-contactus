@@ -62,7 +62,7 @@ class ContactUsController {
 			        from contactUs.email
 			        subject "${(grailsApplication.config.contactus.subject.prefix ?: "Contact Me:")} ${contactUs.subject}"
 			        body( view: grailsApplication.config.contactus.email.view ?: "/emailBody", 
-			        plugin: grailsApplication.config.contactus.email.view ? null : "contact-me",
+			        plugin: grailsApplication.config.contactus.email.view ? null : "/emailBody",
 			        model:[contactUs:contactUs])
 				}
 				def dbtable=	grailsApplication.config.contactus.dbtable ?: "ContactUs"
@@ -74,7 +74,7 @@ class ContactUsController {
 				}
 				
 		        render( view: grailsApplication.config.contactus.thanks.view ?: "/thankYou",
-	            plugin: grailsApplication.config.contactus.thanks.view ? null : "contact-me",
+	            plugin: grailsApplication.config.contactus.thanks.view ? null : "/thankYou",
 	            model: [contactUs: contactUs])
 		        return
 			} catch (Exception e) {
@@ -84,7 +84,7 @@ class ContactUsController {
 		flash.error = message(code:'contactUs.email.badcaptcha', args:params.captcha)
 		flash.chainedParams = params
 		render( view: grailsApplication.config.contactus.form.view ?:  "/contactUs/index",
-        plugin: grailsApplication.config.contactus.form.view ? null : "contact-me",
+        plugin: grailsApplication.config.contactus.form.view ? null : "/contactUs/index",
         model: [contactUs: contactUs, user:user, usersemail:usersemail])
 		return
     }
