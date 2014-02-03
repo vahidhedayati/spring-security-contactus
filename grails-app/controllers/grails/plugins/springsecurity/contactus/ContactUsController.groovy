@@ -1,7 +1,6 @@
 package grails.plugins.springsecurity.contactus
 
 class ContactUsController {
-	def grailsApplication
 	def simpleCaptchaService
 	def contactUsService
 	def mailService
