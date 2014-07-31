@@ -1,4 +1,23 @@
-This is a rewrite of http://grails.org/plugin/contact-me  which should now work with the latest and greatest grails:
+spring-security-contactus 0.2
+=========
+
+Grails  spring-security-contactus is a rewrite of http://grails.org/plugin/contact-me 
+
+
+Dependency :
+
+        compile ":spring-security-contactus:0.2"
+
+
+
+
+## 2.4 notes:
+To get it working under grails 2.4 for now you will need to add the following to your BuildConfig.groovy, under plugins:
+
+   runtime ":cache-headers:1.1.7"
+
+
+This is related to https://github.com/domurtag/grails-simple-captcha/issues/4, so until its next release that is the quick work around...
 
 
 

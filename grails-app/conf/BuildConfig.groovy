@@ -21,6 +21,6 @@ grails.project.dependency.resolution = {
         build ":release:3.0.1", ":rest-client-builder:1.0.3", {
             export = false
         }
-        compile (":simple-captcha:0.9.9",  ":spring-security-core:2.0-RC2",  ":mail:1.0.1") {   export=false }
+        compile (":simple-captcha:0.9.9",  ":spring-security-core:2.0-RC4",  ":mail:1.0.7") {   export=false }
     }
 }

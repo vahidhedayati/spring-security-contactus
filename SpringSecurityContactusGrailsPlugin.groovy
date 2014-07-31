@@ -1,5 +1,5 @@
 class SpringSecurityContactusGrailsPlugin {
-    def version = "0.1"
+    def version = "0.2"
     def grailsVersion = "2.0 > *"
     def title = "Spring Security Contactus Plugin"
     def description = 'Contact Form for spring security - authenticated users can post feedback unauthenticated users need to validate simple-captcha'
