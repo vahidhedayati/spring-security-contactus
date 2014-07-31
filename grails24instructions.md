@@ -37,7 +37,7 @@ cd testcontact
  
 ```bash
 grails refresh-dependencies
-```    
+
 grails create-controller contactMe
 
 vi grails-app/views/contactMe/index.gsp
