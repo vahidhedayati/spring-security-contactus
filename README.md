@@ -11,13 +11,15 @@ Dependency :
 
 
 
+
 ## 2.4 notes:
 To get it working under grails 2.4 for now you will need to add the following to your BuildConfig.groovy, under plugins:
 
    runtime ":cache-headers:1.1.7"
 
+#### Full instructions for 2.4 apps:
 
-This is related to https://github.com/domurtag/grails-simple-captcha/issues/4, so until its next release that is the quick work around...
+Tried to follow this page and found I was lost, so I have made a new page explaining from the very start on a 2.4 asset driven site, should be useful for pre 2.4 resources based. More informative than a lot of this here. (Grails 2.4 from scratch with spring-security-contactus)[https://github.com/vahidhedayati/spring-security-contactus/blob/master/grails24instructions.md]
 
 
 
